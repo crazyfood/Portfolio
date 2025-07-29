@@ -135,3 +135,30 @@ if(form){
     setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
   });
 }
+
+const form = document.getElementById('portfolioForm');
+const successModal = document.getElementById('successModal');
+
+if(form){
+  form.addEventListener('submit', function(event){
+    const name = this.querySelector('input[name="name"]').value.trim();
+    const email = this.querySelector('input[name="email"]').value.trim();
+    const message = this.querySelector('textarea[name="message"]').value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(name === '' || message.length < 10 || !emailPattern.test(email)) {
+      event.preventDefault();
+      alert('Please fill in all fields with valid information (message min 10 chars).');
+      return false;
+    }
+
+    // Show success modal
+    event.preventDefault(); // Remove if using actual FormSubmit
+    successModal.style.display = 'flex';
+
+    setTimeout(() => {
+      successModal.style.display = 'none';
+      form.reset();
+    }, 3000);
+  });
+}
