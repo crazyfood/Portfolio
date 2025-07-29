@@ -133,33 +133,44 @@
   </div>
 
   <!-- Contact Section -->
-  <section id="contact" class="contact-section">
-    <h2>Contact Me</h2>
-    <div class="contact-container">
-      <div class="contact-info">
-        <p>📞 <a href="tel:+917736919022">+91 7736919022</a></p>
-        <p>📧 <a href="mailto:rohitran.kumar@gmail.com">rohitran.kumar@gmail.com</a></p>
-        <p>💼 <a href="https://www.linkedin.com/in/rohit-kumar-30956276/" target="_blank">LinkedIn</a></p>
-        <p>👨‍💻 <a href="https://github.com/crazyfood" target="_blank">GitHub</a></p>
-        <p>💬 <a href="https://wa.me/917736919022" target="_blank">WhatsApp Chat</a></p>
-      </div>
-
-      <div class="contact-form">
-        <form action="https://formsubmit.co/YOUR_EMAIL" method="POST" id="portfolioForm" novalidate>
-          <input type="hidden" name="_subject" value="Portfolio Contact Request">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" placeholder="Your Message" required minlength="10"></textarea>
-          
-          <button type="submit">Send Message</button>
-        </form>
-        <p id="formStatus" style="display:none; color:lightgreen; margin-top:10px;">Message sent successfully!</p>
-      </div>
+<section id="contact" class="contact-section">
+  <h2>Contact Me</h2>
+  <div class="contact-container">
+    
+    <!-- Left Column: Contact Info -->
+    <div class="contact-info">
+      <p>📞 <a href="tel:+917736919022">+91 7736919022</a></p>
+      <p>📧 <a href="mailto:rohitran.kumar@gmail.com">rohitran.kumar@gmail.com</a></p>
+      <p>💼 <a href="https://www.linkedin.com/in/rohit-kumar-30956276/" target="_blank">LinkedIn</a></p>
+      <p>👨‍💻 <a href="https://github.com/crazyfood" target="_blank">GitHub</a></p>
+      <p>💬 <a href="https://wa.me/917736919022" target="_blank">WhatsApp Chat</a></p>
     </div>
-  </section>
+
+    <!-- Right Column: Glassmorphism Contact Form -->
+    <div class="contact-form glass-form">
+      <form action="https://formsubmit.co/YOUR_EMAIL" method="POST" id="portfolioForm" novalidate>
+        <input type="hidden" name="_subject" value="Portfolio Contact Request">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required minlength="10"></textarea>
+        
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content glass-modal">
+      <h3>✅ Message Sent Successfully!</h3>
+      <p>I’ll get back to you soon.</p>
+    </div>
+  </div>
+</section>
+
 
   <!-- Footer -->
   <footer>
