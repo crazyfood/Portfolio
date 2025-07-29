@@ -138,6 +138,7 @@ if(form){
 
 const form = document.getElementById('portfolioForm');
 const successModal = document.getElementById('successModal');
+const closeBtn = document.querySelector('.close-success');
 
 if(form){
   form.addEventListener('submit', function(event){
@@ -152,13 +153,30 @@ if(form){
       return false;
     }
 
-    // Show success modal
-    event.preventDefault(); // Remove if using actual FormSubmit
+    // If using FormSubmit, remove the next line
+    event.preventDefault();
+
+    // Show modal
     successModal.style.display = 'flex';
 
+    // Auto-hide after 3 seconds
     setTimeout(() => {
       successModal.style.display = 'none';
       form.reset();
     }, 3000);
   });
 }
+
+// Close modal on X button click
+if(closeBtn){
+  closeBtn.addEventListener('click', () => {
+    successModal.style.display = 'none';
+  });
+}
+
+// Close modal on outside click
+window.addEventListener('click', e => {
+  if(e.target === successModal){
+    successModal.style.display = 'none';
+  }
+});
