@@ -1,0 +1,1 @@
+// JS placeholder - insert script.js content
