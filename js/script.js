@@ -273,3 +273,25 @@ function drawBackground(){
 
 drawBackground();
 
+// Modal Popup for Reubro Internal Portal
+const modal = document.getElementById("projectModal");
+const reubroCard = document.querySelector(".reubro-card");
+const closeModal = document.querySelector(".close-btn");
+
+if (reubroCard && modal) {
+  reubroCard.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+}
+
+if (closeModal) {
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+}
+
+window.addEventListener("click", e => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
