@@ -66,11 +66,14 @@ body {
 }
 
 .hero-banner {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  filter: brightness(0.6);
+    width: 100%;
+    height: 60vh;            /* flexible height for cinematic look */
+    object-fit: cover;       /* keeps image filling area */
+    object-position: center; /* crop equally from top/bottom */
+    filter: brightness(0.6); /* keeps overlay readable */
+    display: block;
 }
+
 
 .hero-content {
   position: relative;
@@ -95,6 +98,7 @@ body {
   font-weight: normal;
   height: 24px;
   margin-top: 5px;
+  margin-bottom: 40px;
 }
 
 .hero-buttons {
@@ -401,3 +405,277 @@ footer a {
 .close-success:hover {
   color: #fff;
 }
+
+/* Success Modal - Always hidden by default */
+#successModal {
+  display: none !important; /* Force hidden at page load */
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+/* Glass effect for modal */
+.glass-modal {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 30px 40px;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  text-align: center;
+  color: #0ff;
+  animation: popUp 0.4s ease;
+  position: relative;
+}
+
+/* Close button for modal */
+.close-success {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #0ff;
+}
+
+.close-success:hover {
+  color: #fff;
+}
+
+@keyframes popUp {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.glass-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all inputs/buttons */
+}
+
+.glass-form button {
+  margin-top: 10px;
+  align-self: center; /* Ensure the button is centered */
+}
+
+#backgroundCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind everything */
+  background: black;
+}
+section h2 {
+  font-size: 2.5rem;
+  color: #ffffff; /* White title for contrast */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.hero-section {
+  text-align: center;
+  padding: 120px 20px 100px; /* top-right-left-bottom */
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #0ff;
+}
+
+.hero-section .btn-container {
+  margin-top: 40px; /* Space before buttons */
+}
+/* ===== About Section (transparent) ===== */
+.about-section {
+  padding: 100px 20px;
+  color: #fff;
+  text-align: center;
+  background: none; /* no background color */
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, #fff, #0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== About Container with Glass Effect ===== */
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  /* Glass effect only */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,255,255,0.1);
+  transition: 0.4s;
+}
+
+.about-container:hover {
+  box-shadow: 0 0 50px rgba(0,255,255,0.3);
+}
+
+/* ===== About Image with Hover Swap + Glass Effect ===== */
+.about-image {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  padding: 10px; /* to show glass around image */
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease;
+  box-shadow: 0 0 25px rgba(0,255,255,0.3);
+}
+
+.hover-img { opacity: 0; }
+.about-image:hover .hover-img { opacity: 1; }
+.about-image:hover .default-img { opacity: 0; }
+
+/* ===== About Content & Buttons ===== */
+.about-content { max-width: 600px; text-align: left; }
+.about-content p { margin-bottom: 20px; line-height: 1.6; font-size: 1.1rem; }
+
+.about-highlights {
+  list-style: none; padding: 0; margin: 0 0 25px;
+}
+.about-highlights li {
+  margin-bottom: 10px; font-size: 1.05rem;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.about-buttons { display: flex; gap: 20px; }
+.btn-primary, .btn-secondary {
+  padding: 12px 25px; border-radius: 30px;
+  text-decoration: none; transition: 0.3s;
+}
+.btn-primary { background: #0ff; color: #000; }
+.btn-primary:hover { background: #00cccc; }
+.btn-secondary { background: transparent; border: 2px solid #0ff; color: #0ff; }
+.btn-secondary:hover { background: #0ff; color: #000; }
+
+/* ===== Main About Section ===== */
+.about-section {
+  padding: 100px 20px;
+  color: #fff;
+  text-align: center;
+  background: none; /* Keep section transparent */
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, #fff, #0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== Main Glass Container ===== */
+.about-container.glass-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,255,255,0.1);
+  transition: 0.4s;
+}
+
+.about-container.glass-card:hover {
+  box-shadow: 0 0 50px rgba(0,255,255,0.3);
+}
+
+/* ===== Inner Glass Card for Profile Image ===== */
+.about-image.glass-card {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  padding: 10px; /* spacing for inner glass effect */
+  
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+/* ===== Profile Image Hover Swap ===== */
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease;
+  box-shadow: 0 0 25px rgba(0,255,255,0.3);
+}
+
+.hover-img { opacity: 0; }
+.about-image:hover .hover-img { opacity: 1; }
+.about-image:hover .default-img { opacity: 0; }
+
+/* ===== About Content & Buttons ===== */
+.about-content { max-width: 600px; text-align: left; }
+.about-content p { margin-bottom: 20px; line-height: 1.6; font-size: 1.1rem; }
+
+.about-highlights {
+  list-style: none; padding: 0; margin: 0 0 25px;
+}
+.about-highlights li {
+  margin-bottom: 10px; font-size: 1.05rem;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.about-buttons { display: flex; gap: 20px; }
+.btn-primary, .btn-secondary {
+  padding: 12px 25px; border-radius: 30px;
+  text-decoration: none; transition: 0.3s;
+}
+.btn-primary { background: #0ff; color: #000; }
+.btn-primary:hover { background: #00cccc; }
+.btn-secondary { background: transparent; border: 2px solid #0ff; color: #0ff; }
+.btn-secondary:hover { background: #0ff; color: #000; }
+
+
