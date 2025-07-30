@@ -112,71 +112,164 @@ window.addEventListener('click', e => {
 });
 
 // -------------------------
-// Contact Form Validation
+// Contact Form + Success Modal
 // -------------------------
-const form = document.getElementById('portfolioForm');
-const formStatus = document.getElementById('formStatus');
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById('portfolioForm');
+  const successModal = document.getElementById('successModal');
+  const closeBtn = document.querySelector('.close-success');
 
-if(form){
-  form.addEventListener('submit', function(event){
-    const name = this.querySelector('input[name="name"]').value.trim();
-    const email = this.querySelector('input[name="email"]').value.trim();
-    const message = this.querySelector('textarea[name="message"]').value.trim();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if(name === '' || message.length < 10 || !emailPattern.test(email)) {
-      event.preventDefault();
-      alert('Please fill in all fields with valid information (message min 10 chars).');
-      return false;
-    }
-
-    formStatus.style.display = 'block';
-    formStatus.innerText = 'Message sent successfully!';
-    setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
-  });
-}
-
-const form = document.getElementById('portfolioForm');
-const successModal = document.getElementById('successModal');
-const closeBtn = document.querySelector('.close-success');
-
-if(form){
-  form.addEventListener('submit', function(event){
-    const name = this.querySelector('input[name="name"]').value.trim();
-    const email = this.querySelector('input[name="email"]').value.trim();
-    const message = this.querySelector('textarea[name="message"]').value.trim();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if(name === '' || message.length < 10 || !emailPattern.test(email)) {
-      event.preventDefault();
-      alert('Please fill in all fields with valid information (message min 10 chars).');
-      return false;
-    }
-
-    // If using FormSubmit, remove the next line
-    event.preventDefault();
-
-    // Show modal
+  // ✅ If redirected from FormSubmit with ?success=true, show modal
+  if(window.location.search.includes('success=true')){
     successModal.style.display = 'flex';
-
-    // Auto-hide after 3 seconds
     setTimeout(() => {
       successModal.style.display = 'none';
-      form.reset();
+      if(form) form.reset();
     }, 3000);
-  });
-}
-
-// Close modal on X button click
-if(closeBtn){
-  closeBtn.addEventListener('click', () => {
-    successModal.style.display = 'none';
-  });
-}
-
-// Close modal on outside click
-window.addEventListener('click', e => {
-  if(e.target === successModal){
-    successModal.style.display = 'none';
   }
+
+  // Local validation before submit
+  if(form){
+    form.addEventListener('submit', function(event){
+      const name = this.querySelector('input[name="name"]').value.trim();
+      const email = this.querySelector('input[name="email"]').value.trim();
+      const message = this.querySelector('textarea[name="message"]').value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if(name === '' || message.length < 10 || !emailPattern.test(email)) {
+        event.preventDefault();
+        alert('Please fill in all fields with valid information (message min 10 chars).');
+        return false;
+      }
+      // ✅ Do not preventDefault here for FormSubmit; it must submit to send email
+    });
+  }
+
+  // Close modal on X button click
+  if(closeBtn){
+    closeBtn.addEventListener('click', () => {
+      successModal.style.display = 'none';
+    });
+  }
+
+  // Close modal on outside click
+  window.addEventListener('click', e => {
+    if(e.target === successModal){
+      successModal.style.display = 'none';
+    }
+  });
 });
+
+// -------------------------
+// Animated Background with Glowing Skill Rain
+// -------------------------
+const canvas = document.getElementById('backgroundCanvas');
+const ctx = canvas.getContext('2d');
+
+let width = window.innerWidth;
+let height = window.innerHeight;
+canvas.width = width;
+canvas.height = height;
+
+window.addEventListener('resize', () => {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+});
+
+// Skill set for rain
+const skills = [
+  "PHP","WordPress","Python","MySQL","JavaScript","HTML","CSS","jQuery","Git",
+  "AI","ChatGPT","Gemini","Perplexity","n8n","Prompt Engineering"
+];
+
+const skillDrops = [];
+for(let i=0; i<10; i++){ // fewer skill drops
+  skillDrops.push({
+    text: skills[Math.floor(Math.random() * skills.length)],
+    x: Math.random() * width,
+    y: Math.random() * height,
+    speed: 0.3 + Math.random() * 1, // slower fall
+    fontSize: 18 + Math.random() * 10
+  });
+}
+
+// Particle network setup
+const particles = [];
+for(let i=0; i<60; i++){
+  particles.push({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    radius: 2 + Math.random()*2,
+    dx: -1 + Math.random()*2,
+    dy: -1 + Math.random()*2
+  });
+}
+
+function drawBackground(){
+  ctx.clearRect(0, 0, width, height);
+
+  // Draw particles
+  ctx.fillStyle = "#0ff";
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
+    ctx.fill();
+  });
+
+  // Connect particles with faint lines
+  for(let i=0; i<particles.length; i++){
+    for(let j=i+1; j<particles.length; j++){
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const distance = Math.sqrt(dx*dx + dy*dy);
+      if(distance < 150){
+        ctx.strokeStyle = "rgba(0,255,255,0.1)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Move particles
+  particles.forEach(p => {
+    p.x += p.dx;
+    p.y += p.dy;
+    if(p.x < 0 || p.x > width) p.dx *= -1;
+    if(p.y < 0 || p.y > height) p.dy *= -1;
+  });
+
+  // Draw skill rain with glow & fade
+  skillDrops.forEach(drop => {
+    const aiSkills = ["ChatGPT","Gemini","Perplexity","n8n","Prompt Engineering","AI"];
+    const isAI = aiSkills.includes(drop.text);
+
+    ctx.font = `${drop.fontSize}px Arial`;
+    ctx.fillStyle = isAI ? "rgba(0,255,255,0.8)" : "rgba(255,255,255,0.7)";
+    
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = isAI ? "#0ff" : "#fff";
+
+    ctx.fillText(drop.text, drop.x, drop.y);
+
+    ctx.shadowBlur = 0; // reset shadow
+
+    drop.y += drop.speed;
+    if(drop.y > height + 20){
+      drop.y = -20;
+      drop.x = Math.random() * width;
+      drop.text = skills[Math.floor(Math.random() * skills.length)];
+      drop.speed = 0.3 + Math.random() * 1;
+      drop.fontSize = 18 + Math.random() * 10;
+    }
+  });
+
+  requestAnimationFrame(drawBackground);
+}
+
+drawBackground();
+
