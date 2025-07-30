@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+  <canvas id="backgroundCanvas"></canvas>
 
   <!-- Navbar -->
   <header id="header">
@@ -49,13 +50,39 @@
   </section>
 
   <!-- About Section -->
-  <section id="about" class="about-section">
-    <h2>About Me</h2>
-    <p>
-      Full-Stack Developer with 11+ years of experience building scalable, high-performance websites and applications using WordPress, PHP, JavaScript, and AI-powered tools. 
-      Specialized in performance optimization, prompt engineering, and modern web architecture.
-    </p>
-  </section>
+ <section id="about" class="about-section fade-in">
+  <h2>About Me</h2>
+  <div class="about-container glass-card">
+
+    <!-- Inner Glass Card for Image -->
+    <div class="about-image glass-card">
+      <img src="assets/rohit.jpg" alt="Rohit Kumar" class="about-photo default-img">
+      <img src="assets/rohit-alt.jpg" alt="Rohit Kumar Hover" class="about-photo hover-img">
+    </div>
+
+    <div class="about-content">
+      <p>
+        I am a <strong>Full-Stack & AI Developer</strong> with 11+ years of experience 
+        specializing in <strong>WordPress, PHP, JavaScript, Python</strong>, and 
+        performance optimization. I integrate <strong>AI tools like ChatGPT, Gemini, Perplexity</strong> 
+        to enhance development workflows.
+      </p>
+      <ul class="about-highlights">
+        <li>⚡ Built 20+ high-performance projects</li>
+        <li>🤖 Experienced in AI-driven automation & prompt engineering</li>
+        <li>🚀 Expert in scalable architecture & code optimization</li>
+        <li>👨‍🏫 Mentoring developers & leading teams</li>
+      </ul>
+      <div class="about-buttons">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Contact Me</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 
   <!-- Skills Section -->
   <section id="skills" class="skills-section">
@@ -75,62 +102,128 @@
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="projects-section">
-    <h2>Projects</h2>
-    <div class="projects-grid">
+  <section id="projects" class="projects-section fade-in">
+  <h2>My Projects</h2>
+  <div class="projects-grid">
 
-      <!-- Example Public Project Card -->
-      <div class="project-card fade-in">
-        <a href="https://www.stylecraze.com/" target="_blank">
-          <img src="images/stylecraze.png" alt="Stylecraze" loading="lazy">
-          <h3>Stylecraze</h3>
-          <p>A multilingual health and styling blog with calculators, product reviews, and badge-based gamification.</p>
-        </a>
-      </div>
-
-      <!-- Repeat for all public projects with respective links -->
-      <div class="project-card fade-in">
-        <a href="https://www.momjunction.com/" target="_blank">
-          <img src="images/momjunction.png" alt="MomJunction" loading="lazy">
-          <h3>MomJunction</h3>
-          <p>Parenting and lifestyle platform providing health tips, baby names, and expert articles.</p>
-        </a>
-      </div>
-
-      <div class="project-card fade-in">
-        <a href="https://www.bollywoodcraze.com/" target="_blank">
-          <img src="images/bollywoodcraze.png" alt="BollywoodCraze" loading="lazy">
-          <h3>BollywoodCraze</h3>
-          <p>Scrapes celebrity tweets and converts them into posts for entertainment content.</p>
-        </a>
-      </div>
-
-      <div class="project-card fade-in">
-        <img src="images/zeninamoment.png" alt="Zen In A Moment" loading="lazy">
-        <h3>Zen In A Moment</h3>
-        <p>Mindfulness and meditation platform with guided sessions and resources.</p>
-      </div>
-
-      <!-- Continue for all other projects... -->
+    <!-- 1. Stylecraze -->
+    <div class="project-card">
+      <a href="https://www.stylecraze.com/" target="_blank">
+        <img src="images/stylecraze.png" alt="Stylecraze">
       
-      <!-- Reubro Internal Portal with modal -->
-      <div class="project-card fade-in reubro-card">
-        <img src="images/reubro_portal.png" alt="Reubro Internal Portal" loading="lazy">
-        <h3>Reubro Internal Portal</h3>
-        <p>Enterprise internal solution for employees, leaves, notifications, finances, projects, documents, and chat.</p>
-      </div>
-
+        <h3>Stylecraze</h3>
+      </a>
+      <p>A multilingual health and styling blog featuring articles in English, Hindi, Bengali, Tamil,and Telugu. Users can use interactive calculators, write product reviews with pros and cons, and earnbadges.</p>
     </div>
-  </section>
 
-  <!-- Modal for Reubro Project -->
-  <div id="projectModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
+    <!-- 2. MomJunction -->
+    <div class="project-card">
+      <a href="https://www.momjunction.com/" target="_blank">
+        <img src="images/momjunction.png" alt="MomJunction">
+      
+        <h3>MomJunction</h3>
+      </a>
+      <p>A parenting-focused blogging site offering content for mothers and children in multiplelanguages. Features include tools, product reviews, baby-names, stories (Kahaniyan), drawing activities, and educational worksheets.</p>
+    </div>
+
+    <!-- 3. BollywoodCraze -->
+    <div class="project-card">
+      <a href="https://www.bollywoodcraze.com/" target="_blank">
+        <img src="images/bollywoodcraze.png" alt="BollywoodCraze">
+      
+        <h3>BollywoodCraze</h3>
+      </a>
+      <p>An automated content platform built using n8n to fetch tweets from actors, actresses,and directors. The tweets are converted into WordPress posts, with AI-generated featured images forreal-time engaging content.</p>
+    </div>
+
+    <!-- 4. Zen In A Moment -->
+    <div class="project-card">
+      <a href="#" target="_blank">
+        <img src="images/zeninamoment.png" alt="ZenInAMoment">
+      
+        <h3>Zen In A Moment</h3>
+      </a>
+      <p>A WordPress-based coaching platform where users can explore and subscribe topremium tutorials. After secure payment, users gain access to structured learning content with protectedaccess and user-friendly navigation.</p>
+    </div>
+
+    <!-- 5. Earthkind -->
+    <div class="project-card">
+      <a href="#" target="_blank">
+        <img src="images/earthkind.png" alt="Earthkind">
+      
+        <h3>Earthkind</h3>
+      </a>
+      <p>EarthKind is a WordPress-powered e-commerce website focused on selling eco-friendlypest control products. The platform offers a wide range of pesticides, each with a dedicated informationsection detailing usage, benefits, and safety guidelines. Designed for both shopping and education.</p>
+    </div>
+
+    <!-- 6. SteveFarber -->
+    <div class="project-card">
+      <a href="#" target="_blank">
+        <img src="images/stevefarber.png" alt="SteveFarber">
+      
+        <h3>SteveFarber</h3>
+      </a>
+      <p>A biographical WordPress website where the client shares updates, professional events,and leadership initiatives. Followers can stay informed about speaking engagements and published works.</p>
+    </div>
+
+    <!-- 7. Mullinger -->
+    <div class="project-card">
+      <a href="#" target="_blank">
+        <img src="images/mullinger.png" alt="Mullinger">
+        <h3>Mullinger</h3>
+      </a>
+      <p>A WordPress multisite solution for managing multiple game club websites. Each clubshowcases match results, fixtures, team info (seniors/youth), coaching videos, and includes an enquiryfeature.</p>
+    </div>
+
+    <!-- 8. ZaytnZatar -->
+    <div class="project-card">
+      <a href="#" target="_blank">
+        <img src="images/zaytnzatar.png" alt="ZaytnZatar">
+      
+        <h3>ZaytnZatar</h3>
+      </a>
+      <p>An online food ordering and table reservation system built in WordPress. Supports tablebooking, food/catering orders, and digital receipts for Zayt & Zaatar restaurant.</p>
+    </div>
+
+    <!-- 9. Indian River Lagoon -->
+    <div class="project-card">
+      <a href="#" target="_blank">
+        <img src="images/indian_river_lagoon.png" alt="Indian River Lagoon">
+      
+        <h3>Indian River Lagoon</h3>
+      </a>
+      <p>A WordPress-based travel site listing popular visiting spots in the Indian River Lagoonarea. Includes sections for kids’ activities and online games for family engagement.</p>
+    </div>
+
+    <!-- 10. Sundance Boats -->
+    <div class="project-card">
+      <a href="https://www.sundanceboats.com/" target="_blank">
+        <img src="images/sundance.png" alt="Sundance Boats">
+      
+        <h3>Sundance Boats</h3>
+      </a>
+      <p>A WordPress-powered platform where users can purchase or rent boats. Boat ownerscan register and list their boats, while customers can browse, connect with dealers, and book online.</p>
+    </div>
+
+    <!-- 11. FirstPawn -->
+    <div class="project-card">
+      <a href="https://firstpawn.com/" target="_blank">
+        <img src="images/firstpawn.png" alt="FirstPawn">
+      
+        <h3>FirstPawn</h3>
+      </a>
+      <p>A WordPress multisite e-commerce platform enabling centralized management ofmultiple pawn shop locations. Super admin manages all store locations from a single dashboard.</p>
+    </div>
+
+    <!-- 12. Reubro Internal Portal (Modal Popup) -->
+    <div class="project-card reubro-card">
+      <img src="images/reubro.png" alt="Reubro Internal Portal">
       <h3>Reubro Internal Portal</h3>
-      <p>This project is hosted locally and cannot be accessed publicly.<br>Demo available on request.</p>
+      <p>An internal enterprise solution hosted on Reubro's local server. It manages employeerecords, leaves, notifications, finances, projects, document storage, and internal chat.</p>
     </div>
+
   </div>
+</section>
 
   <!-- Contact Section -->
 <section id="contact" class="contact-section">
@@ -148,29 +241,21 @@
 
     <!-- Right Column: Glassmorphism Contact Form -->
     <div class="contact-form glass-form">
-      <form action="https://formsubmit.co/YOUR_EMAIL" method="POST" id="portfolioForm" novalidate>
+      <form action="https://formsubmit.co/rohitran.kumar@gmail.com" method="POST" id="portfolioForm">
         <input type="hidden" name="_subject" value="Portfolio Contact Request">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
-        
+        <input type="hidden" name="_next" value="https://crazyfood.github.io/Portfolios/?success=true">
+
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message" required minlength="10"></textarea>
         
         <button type="submit">Send Message</button>
-      </form>
+    </form>
+
     </div>
   </div>
-
-<!-- Success Modal -->
-<div id="successModal" class="modal">
-  <div class="modal-content glass-modal">
-    <span class="close-success">&times;</span>
-    <h3>✅ Message Sent Successfully!</h3>
-    <p>I’ll get back to you soon.</p>
-  </div>
-</div>
-
 
 
   <!-- Footer -->
@@ -184,7 +269,17 @@
 
   <!-- Floating WhatsApp -->
   <a href="https://wa.me/917736919022" target="_blank" class="whatsapp-btn">💬</a>
+  
+  <!-- Success Modal -->
+<div id="successModal" class="modal">
+  <div class="modal-content glass-modal">
+    <span class="close-success">&times;</span>
+    <h3>✅ Message Sent Successfully!</h3>
+    <p>I’ll get back to you soon.</p>
+  </div>
+</div>
 
-  <script src="./js/script.js"></script>
+<!-- JS File -->
+<script src="./js/script.js"></script>
 </body>
 </html>
