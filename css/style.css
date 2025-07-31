@@ -227,7 +227,10 @@ section h2 {
 
 .project-card img {
   width: 100%;
+  height: 180px;          /* fixed height for consistency */
+  object-fit: cover;      /* crops and fills nicely */
   display: block;
+  border-bottom: 2px solid rgba(0,255,255,0.2); /* optional */
 }
 
 .project-card h3 {
